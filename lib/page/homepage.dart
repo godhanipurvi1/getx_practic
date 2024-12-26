@@ -23,14 +23,23 @@ class _HomepageState extends State<Homepage> {
       body: ListView.builder(
         itemCount: controller.students.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            trailing: IconButton(
-              icon: const Icon(Icons.delete),
-              onPressed: () {
-                controller.removeStudent(index);
-              },
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              contentPadding: EdgeInsets.symmetric(horizontal: 16),
+              // tileColor: Colors.lightBlue[50],
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              trailing: IconButton(
+                icon: const Icon(Icons.delete),
+                onPressed: () {
+                  controller.removeStudent(index);
+                },
+              ),
+              title: Text(
+                  "${controller.students[index]['FirstName']!} ${controller.students[index]['LastName']!}"),
+              subtitle: Text(controller.students[index]["RollNo"]!),
             ),
-            title: Text(controller.students[index]['First Name']!),
           );
         },
       ),

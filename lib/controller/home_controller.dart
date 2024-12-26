@@ -21,8 +21,8 @@ class HomeController extends GetxController {
 
   void addStudent(String fName, String lName, String rollNoVar, STDVar) {
     students.add({
-      "First Name": fName,
-      "Last  Name": lName,
+      "FirstName": fName,
+      "LastName": lName,
       "RollNo": rollNoVar,
       "STDVar": STDVar,
     });
@@ -32,6 +32,15 @@ class HomeController extends GetxController {
   void removeStudent(int index) {
     students.removeAt(index);
 
+    update();
+  }
+
+  void reset() {
+    fName = lName = rollNoVar = STDVar = null;
+    firstName.clear();
+    lastName.clear();
+    rollNo.clear();
+    STD.clear();
     update();
   }
 }

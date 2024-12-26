@@ -21,7 +21,15 @@ class _DetailsPageState extends State<DetailsPage> {
             child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Container(
+            height: 500,
             decoration: const BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 8,
+                    spreadRadius: 2,
+                    offset: Offset(4, 4)),
+              ],
               borderRadius: BorderRadius.all(Radius.circular(20)),
               color: Colors.white,
             ),
@@ -73,18 +81,29 @@ class _DetailsPageState extends State<DetailsPage> {
                   SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        controller.saveData();
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            controller.reset();
+                          },
+                          child: Text("reset")),
+                      SizedBox(width: 20),
+                      ElevatedButton(
+                          onPressed: () {
+                            controller.saveData();
 
-                        controller.addStudent(
-                            controller.fName!,
-                            controller.lName!,
-                            controller.rollNoVar!,
-                            controller.STDVar!);
-                        Navigator.pushNamed(context, "/");
-                      },
-                      child: Text("submit")),
+                            controller.addStudent(
+                                controller.fName!,
+                                controller.lName!,
+                                controller.rollNoVar!,
+                                controller.STDVar!);
+                            Navigator.pushNamed(context, "/");
+                          },
+                          child: Text("submit")),
+                    ],
+                  ),
                 ],
               ),
             ),
